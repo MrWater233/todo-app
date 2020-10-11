@@ -43,7 +43,7 @@ export default {
   border: none;
   outline: none;
 
-  background: linear-gradient(#c0a5f3, #7f95f7);
+  background: linear-gradient(#d4fc79, #96e6a1);
   color: white;
 
   cursor: pointer;

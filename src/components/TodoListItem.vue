@@ -1,8 +1,8 @@
 <template>
   <div class="todo-item">
     <label>
-      <input type="checkbox"/>
-      TODO 1
+      <input type="checkbox" :checked="todo.completed"/>
+      {{todo.content}}
       <span class="check-button"></span>
     </label>
   </div>
@@ -10,7 +10,8 @@
 
 <script>
 export default {
-    name: "TodoListItem"
+    name: "TodoListItem",
+    props: ["todo"]
 };
 </script>
 
@@ -41,7 +42,7 @@ export default {
 
 .todo-item span.check-button {
   position: absolute;
-  top: 0;
+  top: -1px;
 }
 
 .todo-item span.check-button::before,
@@ -55,12 +56,12 @@ export default {
 }
 
 .todo-item span.check-button::before {
-  border: 1px solid #b382f9;
+  border: 1px solid #acee93;
 }
 
 .todo-item span.check-button::after {
   transition: 0.4s;
-  background-color: #b382f9;
+  background-color: #acee93;
   transform: translate(1px,1px) scale(0.8);
   opacity: 0;
 }

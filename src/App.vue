@@ -4,8 +4,9 @@
       <h1>TODO-APP</h1>
 
       <todo-add/>
-      <todo-filter/>
-      <todo-list/>
+      <todo-filter @change-filter="filterStatus = $event"/>
+      <todo-list :todos="filteredTodos"/>
+      
     </div>
   </div>
 </template>
@@ -14,6 +15,8 @@
 import TodoAdd from './components/TodoAdd';
 import TodoFilter from './components/TodoFilter';
 import TodoList from './components/TodoList';
+import todoTools from './common/todoTools';
+import { onMounted } from 'vue';
 
 export default {
   name: 'App',
@@ -21,6 +24,20 @@ export default {
     TodoAdd,
     TodoFilter,
     TodoList
+  },
+  setup() {
+    const {todos,filterStatus,filteredTodos,fetchTodos,addTodo} = todoTools();
+
+    onMounted(() => {
+        fetchTodos()
+    });
+
+    return {
+      todos,
+      filterStatus,
+      filteredTodos,
+      addTodo
+    }
   }
 };
 </script>
@@ -42,7 +59,7 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: rgb(204, 204, 255);
+  background-color: rgb(200, 248, 129);
 }
 
 /* Todo-App容器 */
