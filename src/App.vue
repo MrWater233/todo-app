@@ -3,7 +3,7 @@
     <div class="container">
       <h1>TODO-APP</h1>
 
-      <todo-add />
+      <todo-add :tid="todos.length" @add-todo="addTodo"/>
       <todo-filter :selected="filterStatus" @change-filter="filterStatus = $event" />
       <todo-list :todos="filteredTodos" />
       
